@@ -12,7 +12,7 @@ importers:
         specifier: ^2.7.2
         version: 2.7.4(@prisma/client@5.22.0(prisma@5.22.0))
       '@prisma/client':
-        specifier: ^5.14.0
+        specifier: ^5.22.0
         version: 5.22.0(prisma@5.22.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
@@ -88,7 +88,7 @@ importers:
         specifier: ^0.6.5
         version: 0.6.9(prettier@3.4.1)
       prisma:
-        specifier: ^5.14.0
+        specifier: ^5.22.0
         version: 5.22.0
       tailwindcss:
         specifier: ^3.4.3
