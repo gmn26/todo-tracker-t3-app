@@ -9,7 +9,7 @@ import {
 
 const TopNavComponent = () => {
   return (
-    <nav className="flex w-full items-center justify-between p-4">
+    <nav className="flex w-full items-center justify-between border-b p-4">
       <div className="flex items-center rounded-xl border p-2">
         <Search />
         <input type="text" placeholder="Search for anything here" />
