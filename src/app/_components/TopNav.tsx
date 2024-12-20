@@ -6,6 +6,7 @@ import {
   Plus,
   Slash,
 } from "lucide-react";
+import Link from "next/link";
 
 const TopNavComponent = () => {
   return (
@@ -29,9 +30,12 @@ const TopNavComponent = () => {
         <button className="flex h-12 w-12 items-center justify-center rounded-xl border">
           <MessageSquareDot />
         </button>
-        <button className="flex items-center gap-1.5 rounded-xl bg-blue-700 p-2 text-white">
+        <Link
+          href={"/task/add"}
+          className="flex items-center gap-1.5 rounded-xl bg-blue-700 p-2 text-white"
+        >
           <Plus /> Create New
-        </button>
+        </Link>
       </div>
     </nav>
   );

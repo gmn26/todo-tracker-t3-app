@@ -3,14 +3,17 @@ import { useEffect, useState } from "react";
 interface CustomInputProps {
   placeholder: string;
   name: string;
+  inpVal?: string;
+  handler: (e: React.ChangeEvent<HTMLInputElement>) => string;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = ({
   placeholder,
   name,
+  inpVal,
+  handler,
 }) => {
   const [focus, setFocus] = useState<boolean>(false);
-  const [inpVal, setInpVal] = useState<string>("");
 
   useEffect(() => {
     if (inpVal == "") {
@@ -25,13 +28,13 @@ export const CustomInput: React.FC<CustomInputProps> = ({
       <input
         type="text"
         name={name}
-        className="rounded-lg border p-2"
+        className="w-full rounded-lg border bg-transparent p-2"
         onFocus={() => setFocus(true)}
         onBlur={() => (inpVal != "" ? setFocus(true) : setFocus(false))}
-        onChange={(e) => setInpVal(e.target.value)}
+        onChange={handler}
       />
       <span
-        className={`absolute left-3 top-2 select-none text-xl transition-all duration-700 ${focus ? "-translate-y-6 bg-white text-black" : "text-slate-400"}`}
+        className={`absolute left-3 top-2 w-fit select-none bg-white text-xl transition-all duration-700 ${focus ? "z-0 -translate-y-6 text-black" : "-z-10 text-slate-400"}`}
       >
         {placeholder}
       </span>

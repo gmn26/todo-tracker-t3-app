@@ -35,9 +35,9 @@ export default function Task() {
           {/* List Container */}
         </main>
       </div>
-      <footer className="fixed bottom-0 left-0 right-0 bg-gray-500 py-3 text-center">
+      {/* <footer className="fixed bottom-0 left-0 right-0 bg-gray-500 py-3 text-center">
         Copyright @Ghazy Muhari Novrial, 2024
-      </footer>
+      </footer> */}
     </>
   );
 }
