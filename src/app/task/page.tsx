@@ -1,8 +1,8 @@
-import ListItemComponent from "../_components/ListItem";
-import TopNavComponent from "../_components/TopNav";
+import ListItemComponent from "../_components/_server/ListItem";
+import TopNavComponent from "../_components/_server/TopNav";
 import { LayoutDashboard, Hourglass, BookCheck } from "lucide-react";
 
-export default function Task() {
+export default async function Task() {
   return (
     <>
       <div className="flex h-screen">

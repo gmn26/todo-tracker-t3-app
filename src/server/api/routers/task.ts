@@ -9,15 +9,25 @@ export const taskRouter = createTRPCRouter({
                 say: `Hello ${input.name}, age : ${input.age}`
             };
         }),
+    fetchTask: publicProcedure
+        .query(async ({ ctx }) => {
+            return ctx.db.task.findMany({
+                orderBy: {
+                    createdAt: "desc",
+                }
+            })
+        }),
     addTask: publicProcedure
         .input(z.object({
             title: z.string().min(1),
             description: z.string().nullable(),
-            status: z.string().nullable()
         }))
-        .query(({ input }) => {
-            return {
-                datas: `Title : ${input.title}. Description : ${input.description}. Status : ${input.status}`
-            }
-        })
+        .mutation(async ({ ctx, input }) => {
+            return ctx.db.task.create({
+                data: {
+                    title: input.title,
+                    description: input.description,
+                }
+            })
+        }),
 });
