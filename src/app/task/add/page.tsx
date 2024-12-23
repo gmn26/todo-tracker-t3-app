@@ -1,8 +1,6 @@
 import { LayoutDashboard } from "lucide-react";
 import AddTaskForm from "~/app/_components/_client/AddTaskForm";
-import RegisteredTaskListServer from "~/app/_components/_server/RegisteredTaskListServer";
-// import RegisteredTaskListServer from "~/app/_components/_server/RegisteredTaskListServer";
-// import { CustomInput } from "~/app/_components/CustomInput";
+import TaskListServer from "~/app/_components/_server/task/add/TaskListServer";
 import TopNavComponent from "~/app/_components/_server/TopNav";
 
 export default function AddTask() {
@@ -25,7 +23,7 @@ export default function AddTask() {
             <AddTaskForm />
           </div>
           <div className="w-1/3 rounded-lg bg-blue-700 p-1">
-            <RegisteredTaskListServer />
+            <TaskListServer />
           </div>
         </div>
       </main>

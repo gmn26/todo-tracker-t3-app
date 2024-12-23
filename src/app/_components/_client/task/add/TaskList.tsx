@@ -1,6 +1,7 @@
 "use client";
 
 import { Calendar, Clock, Dot } from "lucide-react";
+import { TimeStampToHour } from "~/utils/ConvertToHour";
 
 type Task = {
   id: string;
@@ -11,7 +12,7 @@ type Task = {
   userId: string | null;
 };
 
-export default function RegisteredTaskListClient({ tasks }: { tasks: Task[] }) {
+export default function TaskListClient({ tasks }: { tasks: Task[] }) {
   return (
     <ul className="flex flex-col gap-4 text-xs">
       {tasks.map((task) => (
@@ -21,7 +22,7 @@ export default function RegisteredTaskListClient({ tasks }: { tasks: Task[] }) {
             <div className="flex w-full justify-between">
               <span className="flex items-center gap-1.5">
                 <Clock size={16} />
-                <span>09.00 AM</span>
+                <span>{TimeStampToHour(task.createdAt)}</span>
               </span>
               <span className="flex items-center gap-1.5">
                 <Calendar size={16} />

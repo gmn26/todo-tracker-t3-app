@@ -1,4 +1,4 @@
-import ListItemComponent from "../_components/_server/ListItem";
+import TaskListServer from "../_components/_server/task/TaskListServer";
 import TopNavComponent from "../_components/_server/TopNav";
 import { LayoutDashboard, Hourglass, BookCheck } from "lucide-react";
 
@@ -29,15 +29,11 @@ export default async function Task() {
           {/* List Container */}
           <div className="m-4 flex flex-col gap-1 rounded-xl bg-slate-200 p-2">
             <h3 className="m-2 font-semibold">Nov 29, 2024</h3>
-            <ListItemComponent />
-            <ListItemComponent />
+            <TaskListServer />
           </div>
           {/* List Container */}
         </main>
       </div>
-      {/* <footer className="fixed bottom-0 left-0 right-0 bg-gray-500 py-3 text-center">
-        Copyright @Ghazy Muhari Novrial, 2024
-      </footer> */}
     </>
   );
 }
