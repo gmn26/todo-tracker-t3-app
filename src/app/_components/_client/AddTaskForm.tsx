@@ -14,8 +14,13 @@ export default function AddTaskForm() {
     return e.target.value;
   };
 
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Form Submitted:", formData);
+  };
+
   return (
-    <form className="flex flex-col gap-4 pr-12">
+    <form className="flex flex-col gap-4 pr-12" onSubmit={submitHandler}>
       <CustomInput
         placeholder="Title"
         name="title"
