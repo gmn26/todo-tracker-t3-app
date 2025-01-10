@@ -17,6 +17,18 @@ export const taskRouter = createTRPCRouter({
                 }
             })
         }),
+    fetchByStatus: publicProcedure
+        .input(z.object({ status: z.string().min(1) }))
+        .query(async ({ ctx, input }) => {
+            return ctx.db.task.findMany({
+                where: {
+                    status: input.status,
+                },
+                orderBy: {
+                    createdAt: "desc",
+                }
+            })
+        }),
     addTask: publicProcedure
         .input(z.object({
             title: z.string().min(1),
