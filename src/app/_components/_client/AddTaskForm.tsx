@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CustomInput } from "./CustomInput";
+import { trpc } from "~/utils/trpc";
 
 export default function AddTaskForm() {
   const [formData, setFormData] = useState<Record<string, string>>({
@@ -9,15 +10,30 @@ export default function AddTaskForm() {
     description: "",
   });
 
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    return e.target.value;
   };
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
+    addTaskMutation.mutate({
+      title: formData.title ?? "",
+      description: formData.description ?? "",
+    });
   };
+
+  const addTaskMutation = trpc.task.addTask.useMutation({
+    onSuccess: (formData) => {
+      alert(`Task "${formData.title}" added successfully!`);
+      setFormData({
+        title: "",
+        description: "",
+      });
+    },
+    onError: (error) => {
+      console.error("Failed to add task:", error.message);
+    },
+  });
 
   return (
     <form className="flex flex-col gap-4 pr-12" onSubmit={submitHandler}>

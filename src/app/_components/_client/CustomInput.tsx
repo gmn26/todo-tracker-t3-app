@@ -6,7 +6,7 @@ interface CustomInputProps {
   placeholder: string;
   name: string;
   inpVal?: string;
-  handler: (e: React.ChangeEvent<HTMLInputElement>) => string;
+  handler: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = ({
@@ -34,6 +34,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
         onFocus={() => setFocus(true)}
         onBlur={() => (inpVal != "" ? setFocus(true) : setFocus(false))}
         onChange={handler}
+        value={inpVal}
       />
       <span
         className={`absolute left-3 top-2 w-fit select-none bg-white text-xl transition-all duration-700 ${focus ? "z-0 -translate-y-6 text-black" : "-z-10 text-slate-400"}`}
