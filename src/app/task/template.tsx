@@ -64,7 +64,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <div>Light Mode</div>
           </div>
         </div>
-        <main className={gridChildClass}>{children}</main>
+        <main className={`${gridChildClass} relative`}>{children}</main>
       </div>
     </>
   );
