@@ -79,6 +79,7 @@ model Task {
     title       String
     description String?
     status      String   @default("On Going")
+    dueDate     DateTime
     createdAt   DateTime @default(now())
     userId      String?
     user        User?    @relation(fields: [userId], references: [id])
