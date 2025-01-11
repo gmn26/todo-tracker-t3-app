@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { CirclePlus } from "lucide-react";
 import TaskListServer from "../_components/_server/task/TaskListServer";
+import { api } from "~/trpc/server";
 
 export default async function Task() {
+  const onGoing = api.task.countByStatus({ status: "On Going" });
+  const complete = api.task.countByStatus({ status: "Complete" });
+
   return (
     <>
       <span>Keterangan warna due date</span>
@@ -14,7 +18,7 @@ export default async function Task() {
             <span className="flex items-center gap-3 pb-2">
               On Going{" "}
               <span className="flex w-8 items-center justify-center rounded-full border border-slate-300 text-sm text-slate-300">
-                2
+                {onGoing}
               </span>
             </span>
           </div>
@@ -31,7 +35,7 @@ export default async function Task() {
             <span className="flex items-center gap-3 pb-2">
               Complete{" "}
               <span className="flex w-8 items-center justify-center rounded-full border border-slate-300 text-sm text-slate-300">
-                2
+                {complete}
               </span>
             </span>
           </div>

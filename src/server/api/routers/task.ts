@@ -42,4 +42,13 @@ export const taskRouter = createTRPCRouter({
                 }
             })
         }),
+    countByStatus: publicProcedure
+        .input(z.object({ status: z.string().min(1) }))
+        .query(async ({ ctx, input }) => {
+            return ctx.db.task.count({
+                where: {
+                    status: input.status,
+                },
+            })
+        }),
 });
