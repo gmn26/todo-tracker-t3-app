@@ -8,6 +8,7 @@ export default function AddTaskForm() {
   const [formData, setFormData] = useState<Record<string, string>>({
     title: "",
     description: "",
+    dueDate: "",
   });
 
   const inputHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +20,7 @@ export default function AddTaskForm() {
     addTaskMutation.mutate({
       title: formData.title ?? "",
       description: formData.description ?? "",
+      dueDate: new Date(formData.dueDate ?? "") ?? "",
     });
   };
 
@@ -28,6 +30,7 @@ export default function AddTaskForm() {
       setFormData({
         title: "",
         description: "",
+        dueDate: "",
       });
     },
     onError: (error) => {
@@ -42,12 +45,21 @@ export default function AddTaskForm() {
         name="title"
         inpVal={formData.title}
         handler={inputHandler}
+        require={true}
       />
       <CustomInput
         placeholder="Description"
         name="description"
         inpVal={formData.description}
         handler={inputHandler}
+        require={false}
+      />
+      <input
+        className="w-full rounded-lg border bg-transparent p-2"
+        onChange={inputHandler}
+        type="datetime-local"
+        name="dueDate"
+        required
       />
       <button className="w-fit rounded-xl bg-green-500 px-3 py-1.5 text-white">
         Add Task

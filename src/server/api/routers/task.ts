@@ -33,12 +33,14 @@ export const taskRouter = createTRPCRouter({
         .input(z.object({
             title: z.string().min(1),
             description: z.string().nullable(),
+            dueDate: z.coerce.date(),
         }))
         .mutation(async ({ ctx, input }) => {
             return ctx.db.task.create({
                 data: {
                     title: input.title,
                     description: input.description,
+                    dueDate: input.dueDate,
                 }
             })
         }),
