@@ -53,4 +53,12 @@ export const taskRouter = createTRPCRouter({
                 },
             })
         }),
+    deleteById: publicProcedure.input(z.object({ id: z.string().min(1) })).mutation(async ({ ctx, input }) => {
+        const { id } = input
+        await ctx.db.task.delete({
+            where: {
+                id
+            }
+        })
+    })
 });

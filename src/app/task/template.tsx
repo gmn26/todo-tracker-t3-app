@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <div className={`group grid h-screen ${containerGrid}`}>
+      <div className={`grid h-screen ${containerGrid}`}>
         <h2
           className={`flex items-center gap-2 border px-2 text-2xl font-bold ${gridChildClass}`}
         >
