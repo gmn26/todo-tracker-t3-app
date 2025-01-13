@@ -5,6 +5,7 @@ import { CustomInput } from "./CustomInput";
 import { trpc } from "~/utils/trpc";
 
 export default function AddTaskForm() {
+  const trpcUtils = trpc.useContext();
   const [formData, setFormData] = useState<Record<string, string>>({
     title: "",
     description: "",
@@ -25,13 +26,25 @@ export default function AddTaskForm() {
   };
 
   const addTaskMutation = trpc.task.addTask.useMutation({
-    onSuccess: (formData) => {
+    onSuccess: async (formData) => {
       alert(`Task "${formData.title}" added successfully!`);
       setFormData({
         title: "",
         description: "",
         dueDate: "",
       });
+      try {
+        await trpcUtils.task.fetchTask.invalidate();
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error(
+            "Failed to invalidate task fetch query:",
+            error.message,
+          );
+        } else {
+          console.error("An unknown error occurred during invalidation.");
+        }
+      }
     },
     onError: (error) => {
       console.error("Failed to add task:", error.message);
