@@ -13,7 +13,7 @@ export const taskRouter = createTRPCRouter({
         .query(async ({ ctx }) => {
             return ctx.db.task.findMany({
                 orderBy: {
-                    createdAt: "desc",
+                    dueDate: "desc",
                 }
             })
         }),
@@ -25,7 +25,7 @@ export const taskRouter = createTRPCRouter({
                     status: input.status,
                 },
                 orderBy: {
-                    createdAt: "desc",
+                    dueDate: "desc",
                 }
             })
         }),
