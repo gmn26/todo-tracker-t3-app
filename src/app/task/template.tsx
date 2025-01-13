@@ -18,7 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <div className={`grid h-screen ${containerGrid}`}>
         <h2
-          className={`flex items-center gap-2 border px-2 text-2xl font-bold ${gridChildClass}`}
+          className={`flex items-center gap-2 border bg-slate-50 px-2 text-2xl font-bold ${gridChildClass}`}
         >
           <NotebookTabs color="blue" />
           Note
@@ -27,8 +27,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <nav
           className={`flex items-stretch justify-between border px-8 ${gridChildClass}`}
         >
-          <ul className="flex gap-4 *:flex *:items-center *:font-medium">
-            <li className="border-b-2 border-blue-700 px-2">List</li>
+          <ul className="mt-auto flex h-fit items-end gap-4 *:flex *:items-center *:pb-3 *:font-medium">
+            <li className="px- border-b-2 border-blue-700">List</li>
             <li>Board</li>
             <li>Calender</li>
           </ul>
@@ -39,7 +39,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </nav>
         <div
-          className={`flex flex-col border-r text-slate-500 ${gridChildClass}`}
+          className={`flex flex-col border-r bg-slate-50 text-slate-500 ${gridChildClass}`}
         >
           <ul className="flex flex-col gap-5 border-b px-3 py-8 *:*:flex *:*:items-center *:*:gap-2">
             <li>

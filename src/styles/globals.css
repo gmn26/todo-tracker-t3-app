@@ -5,3 +5,12 @@
 input:focus {
   outline: none;
 }
+
+.hide-scroll {
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
