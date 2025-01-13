@@ -1,11 +1,21 @@
-import { api } from "~/trpc/server";
+"use client";
+
 import { Calendar, Clock } from "lucide-react";
 import { TimeStampToDate } from "~/utils/ConvertToDate";
 import { TimeStampToHour } from "~/utils/ConvertToHour";
 import DeleteButton from "../../_client/task/DeleteButton";
+import { trpc } from "~/utils/trpc";
 
-export default async function TaskListServer({ status }: { status: string }) {
-  const tasks = await api.task.fetchByStatus({ status });
+export default function TaskListServer({ status }: { status: string }) {
+  const {
+    data: tasks,
+    isLoading,
+    isError,
+  } = trpc.task.fetchByStatus.useQuery({ status });
+
+  if (isLoading) return <div>Loading...</div>;
+
+  if (isError) return <div>Error loading tasks</div>;
 
   return (
     <div className="grid grid-cols-2 gap-4 py-3">
